@@ -1,6 +1,7 @@
 import { getSession } from "next-auth/react";
 import connectDB from "../../utils/connectDB";
 import User from "../../models/User";
+import fiterTodos from "../../utils/fiterTodos";
 
 export default async function handler(req, res) {
   //   connectDB
@@ -57,9 +58,11 @@ export default async function handler(req, res) {
       data: { title, status },
     });
   } else if (req.method === "GET") {
+    const { sortedData } = fiterTodos(user.todos);
+
     res.status(200).json({
       status: "success",
-      todos: user.todos,
+      todos: sortedData,
     });
   } else if (req.method === "PATCH") {
     const { id, status } = req.body;

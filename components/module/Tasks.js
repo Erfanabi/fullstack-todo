@@ -1,12 +1,9 @@
 import axios from "axios";
-import { useRouter } from "next/router";
 import toast from "react-hot-toast";
 import { BiLeftArrow, BiRightArrow } from "react-icons/bi";
 import { RiMastodonLine } from "react-icons/ri";
 
-function Tasks({ data, next, back }) {
-  const router = useRouter();
-
+function Tasks({ data, next, back, fetchTodos }) {
   const changeStatus = (id, status) => {
     axios
       .patch("/api/todo", { id, status })
@@ -14,7 +11,7 @@ function Tasks({ data, next, back }) {
         console.log(res.data);
         if (res.data.status === "success") {
           toast.success("operation was successful");
-          router.reload();
+          fetchTodos();
         }
       })
       .catch((err) => {

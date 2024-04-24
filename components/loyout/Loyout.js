@@ -3,10 +3,11 @@ import { VscListSelection } from "react-icons/vsc";
 import { BiMessageSquareAdd } from "react-icons/bi";
 import { RxDashboard } from "react-icons/rx";
 import { FiLogOut } from "react-icons/fi";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 function Layout({ children }) {
+  const { status } = useSession();
   const router = useRouter();
 
   const logOutHandler = () => {
@@ -18,10 +19,12 @@ function Layout({ children }) {
       <header>
         <p>Botostart Todo App</p>
 
-        <button className="btn btn-logout" onClick={logOutHandler}>
-          Logout
-          <FiLogOut />
-        </button>
+        {status === "authenticated" ? (
+          <button className="btn btn-logout" onClick={logOutHandler}>
+            Logout
+            <FiLogOut />
+          </button>
+        ) : null}
       </header>
 
       <div className="container--main">
