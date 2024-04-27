@@ -1,4 +1,4 @@
-import SignupPage from "../components/template/Signuppage";
+import SignupPage from "../components/template/SignupPage";
 
 function signup() {
   return <SignupPage />;

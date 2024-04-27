@@ -40,6 +40,7 @@ export const authOptions = {
       },
     }),
   ],
+  secret: "LlKq6ZtYbr+hTC073mAmAh9/h2HwMfsFo4hrfCx5mLg=",
 };
 
 export default NextAuth(authOptions);
