@@ -8,7 +8,7 @@ This is a fullstack project.
 First, you must create an account, Second login to your account.
 Then you can create todo for yourself and manage them.
 
-- [Demo Project](https://fullstack-todoo.vercel.app)
+- [Demo Project](https://fullstack-todoo.liara.run)
 
 deploy in liara.ir
 
